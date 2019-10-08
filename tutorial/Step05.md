@@ -1,6 +1,6 @@
 # Step05 - Now it's time to get started with our shop!
 
-[previous step](Step04.md) | [home](../README.md)
+[previous step](Step04.md) <----> [next step](Step06.md) | [home](../README.md)
 
 ## What we learned
 
@@ -35,10 +35,10 @@ npm install
 
 there too.
 
-Now, go back to the root of your project. Serve it and go to `localhost:4200` so that we can see what's wrong with it!
+Now, go back to the root of your project. Serve it and go to [localhost:4200](http://localhost:4200) so that we can see what's wrong with it!
 
 ```
 ng serve
 ```
 
-[previous step](Step04.md) | [home](../README.md)
+[previous step](Step04.md) <----> [next step](Step06.md) | [home](../README.md)
