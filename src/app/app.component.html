@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span role="link" tabindex="0" routerLink="home">SHOP/></span>
+    <nav>
+      <mat-icon role="link" tabindex="0" routerLink="home">home</mat-icon>
+      <mat-icon role="link" tabindex="0" routerLink="login"
+        >account_circle</mat-icon
+      >
+      <mat-icon
+        role="link"
+        tabindex="0"
+        routerLink="manage"
+        *ngIf="user && user.role === 'super_admin'"
+        >settings</mat-icon
+      >
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+<app-notification></app-notification>

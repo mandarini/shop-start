@@ -1,0 +1,39 @@
+<h2>Add a new product</h2>
+
+<p>
+  <em>Posting as {{ currentUser }}</em>
+</p>
+<form [formGroup]="newCommentForm" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    matInput
+    placeholder="Comment title"
+    aria-label="Comment title"
+    formControlName="title"
+    name="Comment title"
+  />
+  <input
+    type="text"
+    matInput
+    placeholder="Comment text"
+    aria-label="Comment text"
+    formControlName="text"
+    name="Comment text"
+  />
+  <input
+    type="number"
+    matInput
+    placeholder="Rating"
+    aria-label="Rating"
+    formControlName="rating"
+    name="Rating"
+  />
+
+  <button
+    [ngClass]="{ disabled: newCommentForm.invalid }"
+    [disabled]="newCommentForm.invalid"
+    type="submit"
+  >
+    Post comment
+  </button>
+</form>

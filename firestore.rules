@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSuperAdmin() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+                get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'super_admin';
+    }
+
+    function isAdmin() {
+      /**
+       * Write conditions to test if a user is an admin
+       */
+    }
+
+    function notYourself() {
+      return request.auth.uid != resource.data.uid;
+    }
+
+    function isCommentOwner() {
+      return isSuperAdmin() || resource.data.user_email == request.auth.token.email;
+    }
+
+    /**
+     * Following rules are copied from Security Rules video https://youtu.be/eW5MdE3ZcAw
+     */
+    function commentIsValid() {
+      return request.resource.data.rating is number &&
+             request.resource.data.rating >= 1 && 
+             request.resource.data.rating <= 5 && 
+             request.resource.data.text is string && 
+             request.resource.data.text.size() > 2 && 
+             request.resource.data.text.size() < 2000 && 
+             request.resource.data.title is string && 
+             request.resource.data.title.size() > 2 && 
+             request.resource.data.title.size() < 120 &&
+             ((request.auth.uid != null && request.resource.data.user_email == request.auth.token.email) ||
+              (request.auth.uid == null && request.resource.data.user_email == 'anonymous' ));
+    }
+    
+    function dontChangeRating() {
+      return request.resource.data.rating == resource.data.rating;
+    }
+
+    function productIsValid() {
+      /**
+       * Write conditions to make sure the input for creating a product is valid
+       */
+    }
+
+    function dontChangeProductTitle() {
+     /**
+      * Write conditions to make sure that when someone is editing a product,
+      * they cannot change its title
+      */
+    }
+
+    function changeInfoButNotRole() {
+
+    }
+
+    match /fcmTokens/{tokenId} {
+        allow read, write;
+    }
+   
+    match /products/{productID} {
+      allow read;
+      allow create, delete: if isSuperAdmin();
+      allow update: if isAdmin();
+
+       match /comments/{commentId} {
+          allow read;
+          allow create: if commentIsValid();
+          allow update: if commentIsValid() && isCommentOwner() && dontChangeRating();
+          allow delete: if isCommentOwner();
+        }
+    }
+    
+    match /users/{userID} {
+    	allow create, read: if isSuperAdmin() || request.auth.uid == userID;
+    	allow update: if isAdmin() && notYourself();
+    	allow delete: if isSuperAdmin() && notYourself();
+    }  
+  }
+}
