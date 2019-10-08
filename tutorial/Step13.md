@@ -1,6 +1,6 @@
 # Step13 - Deploy!
 
-[previous step](Step12.md) <----> [next step](Step13.md) | [home](../README.md)
+[previous step](Step12.md) <----> [next step](Step14.md) | [home](../README.md)
 
 ## Deploying to Firebase
 
@@ -28,4 +28,4 @@ And your app is live in the URL provided there!
 
 Now. go to your [console](https://console.firebase.google.com/), in your project, at the hosting tab, and see it there!
 
-[previous step](Step12.md) <----> [next step](Step13.md) | [home](../README.md)
+[previous step](Step12.md) <----> [next step](Step14.md) | [home](../README.md)
