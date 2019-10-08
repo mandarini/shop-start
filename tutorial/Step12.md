@@ -1,6 +1,6 @@
-# Step10 - Next steps
+# Step12 - Next steps
 
-[previous step](Step09.md) <----> [next step](Step11.md) | [home](../README.md)
+[previous step](Step11.md) <----> [next step](Step13.md) | [home](../README.md)
 
 ## What next?
 
@@ -33,4 +33,4 @@ off the rules and add it to a Cloud Function.
 Return meaningful errors.
 
 
-[previous step](Step09.md) <----> [next step](Step11.md) | [home](../README.md)
+[previous step](Step11.md) <----> [next step](Step13.md) | [home](../README.md)
