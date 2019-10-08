@@ -21,8 +21,10 @@ First off, you need to set up the Authentication in your Firebase Console.
 
 In order to be able to start using Firestore, you need to create your database.
 
-1. Go to the Database tab of your Project console and click 'Create'.
-2. Get familiar with everything that is on your screen. Let's look at the rules and indexes tabs.
+On your Firebase console, from the side menu, click **Database** and choose _"Create Database"_ under
+the **Cloud Firestore**.
+Choose _"Start in test mode"_. This will allow everyone to read/write to our database. It does not matter
+very much at the moment, since we will be setting read and write rules soon.
 
 ## Create a storage bucket
 
