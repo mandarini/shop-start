@@ -10,11 +10,22 @@
    create a new project.
 3. Get familiar with the Firebase console and its parts!
 
+## Install @angular/fire
+
+Now, let us add the [@angular/fire](https://github.com/angular/angularfire2) library
+to our project, the library that will help
+us use Firebase functions in our Angular project.
+In your terminal type:
+
+```
+npm install firebase @angular/fire --save
+```
+
 ## Setting up Firebase in our Angular app
 
 Now, we need to set up Firebase in our Angular application.
-Since this is not an Angular
-workshop, we'll skim through this, just so you can see how it works.
+Since this is not an Angular workshop, we'll skim through this, just so you can see how it works, and be able to
+set it up in the project we'll build today.
 In any case, we are going to be using another repo for our workshop today!
 
 Open the file `src/app/app.module.ts`.
@@ -72,7 +83,7 @@ imports: [
 And now you are ready to go!
 Firebase is all set up!
 
-__Note:__
+**Note:**
 
 This is just showing how you will use the configuration settings taken from the firebase console in your app.
 We will not go deeper into using `@angular/fire` or `angular`, since this is not the topic of this workshop. You will
