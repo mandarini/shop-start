@@ -8,7 +8,7 @@ import { createUserFunction } from "./sub_functions/createUserFunction";
 import { getFullProductFunction } from "./sub_functions/getFullProductFunction";
 import { notifyUsersFunction } from "./sub_functions/notifyUsersFunction";
 import { notifyUsersFirstTimeFunction } from "./sub_functions/notifyUsersFirstTimeFunction";
-import { scheduledBackupFunction } from "./sub_functions/scheduledBackupFunction";
+// import { scheduledBackupFunction } from "./sub_functions/scheduledBackupFunction";
 
 export const addProductIdToProduct = functions.firestore
   .document("products/{productId}")
@@ -26,6 +26,6 @@ export const notifyUsersFistTime = functions.firestore
   .document("fcmTokens/{tokenId}")
   .onWrite(notifyUsersFirstTimeFunction);
 
-export const scheduledBackup = functions.pubsub
-  .schedule("every 24 hours")
-  .onRun(scheduledBackupFunction);
+// export const scheduledBackup = functions.pubsub
+//   .schedule("every 24 hours")
+//   .onRun(scheduledBackupFunction);

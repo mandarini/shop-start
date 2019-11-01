@@ -35,6 +35,24 @@ npm install
 
 there too.
 
+## Connect it to the project you created in the Firebase console
+
+### Copying the configuration settings
+
+Remember in [Step02](Step02.md) how we connected our Firebase project from the console to our Angular application?
+Copy the Firebase configuration for your project from the [Firebase console](console.firebase.google.com), as described in Step02, and
+paste it in the `environment.ts` and `environment.prod.ts` files.
+
+### Connecting our app to our project using the CLI
+
+Now, connect your app with the project in the Firebase console, using the CLI.
+Follow the steps on [Step04](Step04.md), but make sure you do not overwrite the files for functions. We'll do
+it together now, so that you can see. You do not want to overwrite these, since I have already created
+for you the things we will be working on.
+
+
+## Serve it
+
 Now, go back to the root of your project. Serve it and go to [localhost:4200](http://localhost:4200) so that we can see what's wrong with it!
 
 ```

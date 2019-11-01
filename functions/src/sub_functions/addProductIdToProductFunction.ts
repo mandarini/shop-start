@@ -1,6 +1,6 @@
-import * as admin from "firebase-admin";
+// import * as admin from "firebase-admin";
 
-const db = admin.firestore();
+// const db = admin.firestore();
 
 export async function addProductIdToProductFunction(change: any, context: any) {
   /**

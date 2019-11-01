@@ -10,17 +10,6 @@
    create a new project.
 3. Get familiar with the Firebase console and its parts!
 
-## Install angularfire2
-
-Now, let us add the [@angular/fire](https://github.com/angular/angularfire2) library
-to our project, the library that will help
-us use Firebase functions in our Angular project.
-In your terminal type:
-
-```
-npm install firebase @angular/fire --save
-```
-
 ## Setting up Firebase in our Angular app
 
 Now, we need to set up Firebase in our Angular application.
@@ -34,8 +23,6 @@ Open the file `src/app/app.module.ts`.
 
 ```
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 ```
 
 2.  Open your `environments/` directory. This contains two separate files, `environment.ts` and `environment.prod.ts`. These files can contain
@@ -70,19 +57,25 @@ configuration parameters of your project:
 ![Web Icon on Console](img/s02.png)
 ![Config Parameters](img/s03.png)
 
+This is the information that will connect your application with the project we just created in the Firebase console. You will need to do that
+when you clone the ready-made app, to connect it to your project!
+
 3. Within the `@NgModule`, modify the imports array like this:
 
 ```
 imports: [
   BrowserModule,
-  AngularFireModule.initializeApp(environment.firebase),
-  AngularFirestoreModule,
-  AngularFireAuthModule
-],
-providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
+  AngularFireModule.initializeApp(environment.firebase)
+]
 ```
 
 And now you are ready to go!
 Firebase is all set up!
+
+__Note:__
+
+This is just showing how you will use the configuration settings taken from the firebase console in your app.
+We will not go deeper into using `@angular/fire` or `angular`, since this is not the topic of this workshop. You will
+just need this knowledge to set up your app in the next video.
 
 [previous step](Step01.md) <----> [next step](Step03.md) | [home](../README.md)
