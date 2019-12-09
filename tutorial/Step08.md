@@ -28,6 +28,7 @@ Let's take a look at this function in our `firestore.rules` file:
 We can check the type of each field, the size of each field, and even the content!
 
 | _Additional step here:_                                  |
+| -------------------------------------------------------- |
 | In your `functions` directory run the following command: |                
 | `firebase deploy --only functions:getFullProduct`        |
 | We will explain in the next step what this function does.|
