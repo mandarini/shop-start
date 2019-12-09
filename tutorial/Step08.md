@@ -1,61 +1,51 @@
-# Step08 - Type checking with rules
+# Step08 - Compound queries
 
 [previous step](Step07.md) <----> [next step](Step09.md) | [home](../README.md)
 
-## What's our schema?
+## Add product uid to newly created product
 
-We learned how to resctrict user access with rules.
-Now, let's see how to impose type checking and a schema to our data.
+We talked about data manipulation.
 
-Let's take a look at this function in our `firestore.rules` file:
+Similarly to `createUserFunction`, write a function that will add the product id to the product, after it has been written.
 
-```
-    function commentIsValid() {
-      return request.resource.data.rating is number &&
-             request.resource.data.rating >= 1 &&
-             request.resource.data.rating <= 5 &&
-             request.resource.data.text is string &&
-             request.resource.data.text.size() > 2 &&
-             request.resource.data.text.size() < 2000 &&
-             request.resource.data.title is string &&
-             request.resource.data.title.size() > 2 &&
-             request.resource.data.title.size() < 120 &&
-             ((request.auth.uid != null && request.resource.data.user_email == request.auth.token.email) ||
-              (request.auth.uid == null && request.resource.data.user_email == 'anonymous' ));
-    }
-```
+Check your code [here](https://github.com/mandarini/shop/blob/master/functions/src/sub_functions/addProductIdToProductFunction.ts):
 
-We can check the type of each field, the size of each field, and even the content!
+## No subcollections!
 
-| _Additional step here:_                                  |
-| -------------------------------------------------------- |
-| In your `functions` directory run the following command: |                
-| `firebase deploy --only functions:getFullProduct`        |
-| We will explain in the next step what this function does.|
+As we explained previously, when requesting an object from a collection, Firestore does not bring us back its subcollections.
+So, if we need to get the comments for each product, we would have to request them in a separate call from our front end.
+And then, for each comment, we would have to request the user info, to display the user's image and name with it.
 
-Try to submit an invalid comment, and see if it works!
+How can we save ourselves from so many different calls from our front end?
 
-## Give our product a schema
+1. You can structure your data in such a way that you do not have to make too many queries.
+   That means data duplication. And it's not a bad practice when we're talking about NoSQL databases.
+   Resources on how to structure your data:
+   [How to Structure Your Data](https://www.youtube.com/watch?v=haMOUb3KVSo)
+   [What is a NoSQL Database](https://www.youtube.com/watch?v=v_hR4K4auoQ)
+   [Cloud Firestore Data Modeling](https://www.youtube.com/watch?v=lW7DWV2jST0)
 
-Turn this function into some restrictions to the products created:
+2. You can create a Cloud Function that will take that load off the client and do the combination of queries for you!
 
-```
-  function productIsValid() {
-      /**
-       * Write conditions to make sure the input for creating a product is valid
-       */
-  }
-```
+In this example, it really does not save us much, and we could really duplicate our data. But keep this as an example when
+a more complex and expensive operation comes up for your app.
 
-Once done:
+eg.
+
+- Collect data from multiple collections
+- Search your data
+- Manipulate your data upon writing them
+
+Let's look at `getFullProductFunction` to see how it works!
+
+Then, let's look at `addProductIdToProductFunction` to see what we need it to do.
+
+## Deploy
 
 ```
-firebase deploy --only firestore:rules
+firebase deploy --only functions
 ```
 
-## Getting creative
-
-You can get pretty creative with rules, and you can end up with a pretty strict and structure database schema! It's up to you.
-The most important thing, though, is to remember that the rules are the best shield between you and any malicious users! So use them wisely.
+And deploy everything.
 
 [previous step](Step07.md) <----> [next step](Step09.md) | [home](../README.md)
