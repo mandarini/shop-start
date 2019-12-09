@@ -5,7 +5,7 @@
 ## Cloud Messaging
 
 Let's see how we can notify our users for new comments.
-Do notify our users, we need our app to have a service worker, and we need to store the user's device token.
+To notify our users, we need our app to have a service worker, and we need to store the user's device token.
 
 Then, we can trigger a cloud function once a new comment is written, and send the users a push notification.
 
