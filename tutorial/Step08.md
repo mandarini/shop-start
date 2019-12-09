@@ -4,6 +4,8 @@
 
 ## Add product uid to newly created product
 
+Now, let's look at `addProductIdToProductFunction` to see what we need it to do.
+
 We talked about data manipulation.
 
 Similarly to `createUserFunction`, write a function that will add the product id to the product, after it has been written.
@@ -37,8 +39,6 @@ eg.
 - Manipulate your data upon writing them
 
 Let's look at `getFullProductFunction` to see how it works!
-
-Then, let's look at `addProductIdToProductFunction` to see what we need it to do.
 
 ## Deploy
 
